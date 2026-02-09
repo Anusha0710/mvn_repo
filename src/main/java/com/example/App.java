@@ -5,6 +5,20 @@ package com.example;
  */
 public class App {
 
+    // Issue 1: Unused variable
+    private static String unused = "not used";
+    
+    // Issue 2: Magic number
+    public int calculateDiscount(int price) {
+        return price * 10 / 100;  // Magic number 10, 100
+    }
+    
+    // Issue 3: Missing null check
+    public String formatName(String name) {
+        return name.toUpperCase();  // Could throw NPE
+    }
+
+    
     /**
      * Adds two numbers
      * @param a first number
