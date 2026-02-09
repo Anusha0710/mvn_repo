@@ -112,5 +112,68 @@ public class AppTest {
         assertFalse(app.isEven(5));
         assertFalse(app.isEven(-3));
     }
-}
 
+    @Test
+    public void testIsEvenWithNegativeEvenNumber() {
+        assertTrue(app.isEven(-4));
+        assertTrue(app.isEven(-2));
+    }
+
+    // Additional edge case tests
+    @Test
+    public void testDivideNegativeNumbers() {
+        assertEquals(-2, app.divide(-6, 3));
+        assertEquals(2, app.divide(-6, -3));
+    }
+
+    @Test
+    public void testSubtractNegativeResult() {
+        assertEquals(-10, app.subtract(5, 15));
+    }
+
+    @Test
+    public void testAddLargeNumbers() {
+        assertEquals(1000000, app.add(500000, 500000));
+    }
+
+    // Test for main method
+    @Test
+    public void testMainMethod() {
+        try {
+            App.main(new String[]{});
+        } catch (Exception e) {
+            fail("Main method should not throw exception: " + e.getMessage());
+        }
+    }
+
+    // Tests for calculateDiscount method
+    @Test
+    public void testCalculateDiscountBasic() {
+        assertEquals(10, app.calculateDiscount(100));
+        assertEquals(5, app.calculateDiscount(50));
+        assertEquals(0, app.calculateDiscount(0));
+    }
+
+    @Test
+    public void testCalculateDiscountWithLargePrice() {
+        assertEquals(100, app.calculateDiscount(1000));
+    }
+
+    // Tests for formatName method
+    @Test
+    public void testFormatNameWithValidInput() {
+        assertEquals("JOHN", app.formatName("john"));
+        assertEquals("ALICE", app.formatName("alice"));
+        assertEquals("JOHNDOE", app.formatName("JohnDoe"));
+    }
+
+    @Test
+    public void testFormatNameWithNull() {
+        assertEquals("", app.formatName(null));
+    }
+
+    @Test
+    public void testFormatNameWithEmptyString() {
+        assertEquals("", app.formatName(""));
+    }
+}
